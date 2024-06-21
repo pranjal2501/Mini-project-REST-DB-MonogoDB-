@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All chats</title>
+    <style>
+        table {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+
+        }
+
+        th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        div
+        {
+            height:fit-content;
+            width:fit-content;
+            background-color: #D4F1F4;
+            border-radius: 10px;
+            display: inline-block;
+            margin-left: 20px;
+        }
+        .msg
+        {
+            background-color: rgb(16, 154, 228);
+            border-radius: 5px;
+        }
+        p{
+            padding: 10px;
+        }
+        hr{
+           position: relative;
+           bottom: 5px;
+           width: 75px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>All the chats!</h3>
+    <form action="/chat/new" method="get"><button>New chat</button></form>
+    <% for(chat of result) { %>
+    <div>
+        <p>From <%= chat.from %></p>
+        <p class="msg" style="padding: 10px;margin-left: 10px;margin-right: 10px;"><%= chat.msg %></p>
+        <p>To <%= chat.to %></p>
+        <form action="/post/<%= chat._id %>?_method=DELETE" method="POST"><button>Delete chat</button></form>
+        <hr>
+    </div>
+    <% } %>
+    <!-- <table>
+        <tr>
+            <th>
+                from
+            </th>
+            <th>
+                to
+            </th>
+            <th>
+                message
+            </th>
+            <th>
+                timing
+            </th>
+        </tr>
+        <% for(chat of result) { %>
+            <tr>
+                <td>
+                    <%= chat.from %>
+                </td>
+                <td>
+                    <%= chat.to %>
+                </td>
+                <td>
+                    <%= chat.msg %>
+                </td>
+                <td>
+                    <%= chat.createdAt %>
+                </td>
+            </tr>
+            <% } %>
+    </table> -->
+</body>
+
+</html>
